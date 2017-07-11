@@ -4,7 +4,8 @@ import Vue from 'vue'
 import app from './app'
 import router from './router'
 
-import { Button, Select,Row,Col,Carousel,CarouselItem} from 'element-ui'
+
+import { Button, Select,Row,Col,Carousel,CarouselItem, Input} from 'element-ui'
 
 
 Vue.use(Button)
@@ -13,6 +14,7 @@ Vue.use(Row)
 Vue.use(Col)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
+Vue.use(Input)
 
 /* eslint-disable no-new */
 new Vue({

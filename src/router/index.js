@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 
 import home from '../components/home/home.vue'
 import serve from '../components/serve/serve.vue'
-import landing from '../components/landing/landing.vue'
+
 import item from '../components/item/item.vue'
 import details from '../components/details/details.vue'
 
@@ -29,13 +29,10 @@ export default new VueRouter({
       component:item
     },
     {
-      path:'/landing',
-      component:landing
-    },
-    {
       path:'/details',
       component:details
-    },
+    }
+
   ]
 
 
