@@ -41,27 +41,27 @@
             <a href="#" class="pagedown ">下一页</a>
           </span>
           </h3>
-          <div class="items">
-            <router-link to="/details" v-for="jie in baojie">
+          <div class="items" @click="details(bao)" v-for="bao in baojie">
+            <router-link :to="`/details/${bao.id}`">
               <div class="boxtab">
-                <img class="img-left" :src="jie.img" alt="">
+                <img class="img-left" :src="bao.img" alt="">
                 <span class="information">
-              <span class="title">{{jie.name}}</span>
+              <span class="title">{{bao.name}}</span>
                <span class="Price">
-                <span class="volume">{{jie.content}}</span>
+                <span class="volume">{{bao.content}}</span>
               </span>
               <br>
               <span class="Price">
-                <span class="red">{{jie.price}}</span>
+                <span class="red">{{bao.price}}</span>
                 <span class="minred">元/小时</span>
                 &nbsp;&nbsp;&nbsp;
-                <span class="old">原价{{jie.oldPrice}}元</span>
+                <span class="old">原价{{bao.oldPrice}}元</span>
                 <br>
                 <span class="navtxt">
                   <img src="./home1.png" alt="">
-                  <span>{{jie.provider}}</span>&nbsp;
-                  <span>已售{{jie.already}}</span>&nbsp;
-                  <span>好评{{jie.praise}}%</span>
+                  <span>{{bao.provider}}</span>&nbsp;
+                  <span>已售{{bao.already}}</span>&nbsp;
+                  <span>好评{{bao.praise}}%</span>
                 </span>
               </span>
             </span>
@@ -94,12 +94,12 @@
         <div class="centerright">
           <div class="rightct">
             <h3>服务商</h3>
-            <div class="fuwishang" v-for="baoright in baojie">
-              <img :src="baoright.img" width="70" height="70">
-              <p>{{baoright.provider}}</p>
+            <div class="fuwishang" v-for="bao in baojie">
+              <img :src="bao.img" width="70" height="70">
+              <p>{{bao.provider}}</p>
               <p class="pline">
-                <span>已成功接单<span>{{baoright.success}}</span></span>
-                <span>好评<span>{{baoright.praise}}%</span></span></p>
+                <span>已成功接单<span>{{bao.success}}</span></span>
+                <span>好评<span>{{bao.praise}}%</span></span></p>
             </div>
           </div>
         </div>
@@ -115,10 +115,25 @@
 <script>
   import header from '../header/header.vue'
   import footer from '../footer/footer.vue'
+  import Bus from '../../common/eventBus'
 
     export default {
+      data(){
+        return{
+          baojie:[]
+        }
+      },
+      methods:{
+        details(bao){
+          Bus.$emit('details', bao)
+        }
+      },
+      created(){
+        Bus.$on('details', (bao) =>{
+          this.baojie = bao
+        })
 
-      props:['baojie'],
+      },
       components:{
         'com-header' : header,
         'com-footer' : footer,

@@ -38,7 +38,8 @@
 <script>
   import header from '../header/header.vue'
   import footer from '../footer/footer.vue'
-  import axios from 'axios'
+  import Bus from '../../common/eventBus'
+
     export default {
       data(){
         return{
@@ -46,14 +47,11 @@
         }
       },
       created(){
-        axios.get('/api/serve')
-          .then(response => {
-              const result = response.data
-              if(result.code === 0){
-                  this.anmo = result.data.server
-                  console.log(this.anmo);
-              }
-          })
+        Bus.$on('details', (anmo) =>{
+          this.anmo = anmo
+
+        })
+
       },
 
       components:{

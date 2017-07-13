@@ -148,7 +148,9 @@
                 <span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
               </div>
               <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><router-link to="/item">更多服务&gt;</router-link></span>
+                <div class="tagsListHeader">
+                  <span class="lookMore" @click="details(baojie)">
+                    <router-link to="/item">更多服务&gt;</router-link></span>
                 </div>
                 <div class="row">
                   <div @click="details(bao)" v-for="bao in baojie">
@@ -157,8 +159,7 @@
                         <img :src="bao.img"
                              class="serviceImg" >
                         <div class="serviceName">{{bao.name}}</div>
-                        <div class="description">{{bao.content}}
-                    </div>
+                        <div class="description">{{bao.content}}</div>
                         <div class="price"><span style="font-size: 20px">{{bao.price}}</span>元/小时<span class="btn">查看详情</span></div>
                       </div>
                     </router-link>
@@ -174,7 +175,7 @@
               </div>
               <div class="servicetags">
                 <div class="tagsListHeader">
-                  <span class="lookMore">
+                  <span class="lookMore" @click="details(anmo)">
                   <router-link to="/item">更多服务&gt;</router-link>
                   </span>
                 </div>
@@ -205,7 +206,7 @@
               </div>
               <div class="servicetags">
                 <div class="tagsListHeader">
-                  <span class="lookMore">
+                  <span class="lookMore" @click="details(weixiu)">
                   <router-link to="/item">更多服务&gt;</router-link>
                   </span>
                 </div>
@@ -229,8 +230,6 @@
                 </div>
               </div>
             </div>
-
-
           </div>
         </el-col>
       </el-row>
@@ -256,7 +255,6 @@
     methods:{
       details(bao){
           Bus.$emit('details', bao)
-          console.log(bao);
       },
 
     },

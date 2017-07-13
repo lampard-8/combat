@@ -29,7 +29,7 @@
                     下载APP
                 </a>
                 </li>
-                <li>
+                <li @click="details(baojie)">
                   <router-link to="/serve">服务商</router-link>
                 </li>
                 <li>
@@ -54,7 +54,31 @@
 </template>
 
 <script>
-    export default {}
+  import Bus from '../../common/eventBus'
+  import axios from 'axios'
+    export default {
+        state(){
+          return {
+            baojie:[]
+          }
+        },
+
+        methods:{
+          details(baojie){
+            Bus.$emit('details', baojie)
+          },
+
+        },
+      created(){
+        axios.get('/api/serve')
+          .then(response => {
+            const result = response.data
+            if(result.code === 0){
+              this.baojie = result.data.server
+            }
+          })
+      }
+    }
 </script>
 
 <style scoped>
