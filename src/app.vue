@@ -1,29 +1,57 @@
 <template>
   <div>
-    <com-header></com-header>
-
     <keep-alive>
-      <router-view></router-view>
+      <router-view :baojie="baojie" :anmo="anmo" :weixiu="weixiu"></router-view>
     </keep-alive>
-    <com-footer></com-footer>
-
   </div>
 
 </template>
 
 <script>
-  import header from './components/header/header.vue'
-  import footer from './components/footer/footer.vue'
-
-    export default {
-
-      components:{
-        'com-header' : header,
-        'com-footer' : footer,
-
+  import axios from 'axios'
+  export default {
+    data(){
+      return{
+        baojie:[],
+        anmo:[],
+        weixiu:[]
       }
+    },
+    created(){
+      axios.get('/api/home')
+        .then(response =>{
+          const result = response.data
+          if(result.code ===0){
+            this.baojie = result.data.server
 
-    }
+          }
+        })
+      axios.get('/api/serve')
+        .then(response => {
+
+          const result = response.data
+
+          if(result.code === 0){
+            this.anmo = result.data.server
+
+          }
+        })
+      axios.get('/api/item')
+        .then(response => {
+
+          const result = response.data
+
+          if(result.code === 0){
+            this.weixiu = result.data.server
+
+          }
+        })
+    },
+
+
+
+
+  }
 </script>
 
 <style>

@@ -1,27 +1,29 @@
 <template>
+  <div>
+    <com-header></com-header>
     <div class="details">
       <div class="service-center">
         <h2>
           <a href="#">所有分类</a>
           <a href="#"> > </a>
-          <a href="#">家庭保洁</a>
+          <router-link to="/item">家庭保洁</router-link>
           <a href="#"> > </a>
         </h2>
         <div class="centerleft">
           <div class="ctop">
-            <img class="img-left" src="./012.jpg" alt="">
+            <img class="img-left" :src="bao.img" alt="">
             <span class="information">
-              <span class="title">家庭保洁</span>
+              <span class="title">{{bao.name}}</span>
               <span class="Price">
                 价格
-                <span class="red">30</span>
+                <span class="red">{{bao.price}}</span>
                 <span class="minred">元/小时</span>
                 &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
+                <span class="old">原价{{bao.oldPrice}}元</span>
               </span>
               <br>
               <span class="Price">已售
-                <span class="volume">34861</span>
+                <span class="volume">{{bao.already}}</span>
               </span>
             </span>
             <span class="qrcode">
@@ -32,27 +34,11 @@
           </div>
           <div class="cdown">
             <b>服务描述</b>
-            <p id="servicePriceDescription" innertext="服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保洁工具上门服务）
-
-服务保障：
-1.根据满意度提交评价。
-2.清洁内容丰富，专注卫生死角。
-3.价格透明，在规定服务时间内不现场加价。
-4.服务标准化，品质可预见。
-5.发现怠工，随即终止服务或出现服务质量问题，可致电云家政客服热线协助处理。
-
-服务范围：
-（可以在购买时间内自由安排服务项目，超出服务范围的服务要求可以现场与工人沟通）
-1.客餐厅：电视柜、茶几、桌面、门、餐桌、垃圾桶、沙发下、地面、卫生死角。
-2.卧室和阳台：阳台扶手、开关、插座、及其他。
-3.书房和储物间：桌面、书柜、垃圾桶、地面、卫生死角及其他。
-4.厨房：抽油烟机表面、橱柜、洗菜池、台面、地面、垃圾桶及其他。
-5.卫生间：洗漱台、沐浴房、马桶、垃圾桶、地面及其他。">服务内容：<br>家庭保洁服务，2小时起订。（云家政暂时不提供带保洁工具上门服务）<br><br>服务保障：<br>1.根据满意度提交评价。<br>2.清洁内容丰富，专注卫生死角。<br>3.价格透明，在规定服务时间内不现场加价。<br>4.服务标准化，品质可预见。<br>5.发现怠工，随即终止服务或出现服务质量问题，可致电云家政客服热线协助处理。<br><br>服务范围：<br>（可以在购买时间内自由安排服务项目，超出服务范围的服务要求可以现场与工人沟通）<br>1.客餐厅：电视柜、茶几、桌面、门、餐桌、垃圾桶、沙发下、地面、卫生死角。<br>2.卧室和阳台：阳台扶手、开关、插座、及其他。<br>3.书房和储物间：桌面、书柜、垃圾桶、地面、卫生死角及其他。<br>4.厨房：抽油烟机表面、橱柜、洗菜池、台面、地面、垃圾桶及其他。<br>5.卫生间：洗漱台、沐浴房、马桶、垃圾桶、地面及其他。</p>
+            <p id="servicePriceDescription" innertext="服务内容">服务内容：<br>{{bao.content}}<br><br><br>服务保障：<br>{{bao.guarantee}}<br>。<br><br>服务范围：<br>{{bao.range1}}<br></p>
             <b>服务范围</b>
-            <p>北京 上海 广州 深圳 南京 武汉 西安 成都 杭州 苏州 天津 常州 东莞 合肥 宁波 无锡 厦门 郑州 佛山</p>
+            <p>{{bao.range2}}</p>
             <b>服务时间</b>
-            <p>08:00-20:00<i>最近可预约时间:<em>07月11日 18:00</em></i></p>
+            <p>{{bao.time}}<i>最近可预约时间:<em>07月11日 18:00</em></i></p>
             <b>订购须知</b>
             <p id="orderingNotice" style="background: #fffcf1" innertext="1.商家将在您下单后30分钟内确认是否接单；
 2.订单确认后，修改订单或退款需提前2小时通知；
@@ -68,10 +54,10 @@
           <div class="rightct">
             <h3>服务商</h3>
             <img class="yun" src="./yun.jpg" alt="">
-            <p class="jia">云家政</p>
-            <p>成功接单 <span>26860</span></p>
-            <p>接单率 <span>96%</span></p>
-            <p>好评率<span>86%</span></p>
+            <p class="jia">{{bao.provider}}</p>
+            <p>成功接单 <span>{{bao.success}}</span></p>
+            <p>接单率 <span>{{bao.Orders}}%</span></p>
+            <p>好评率<span>{{bao.praise}}%</span></p>
           </div>
           <div class="erweima">
             <img src="./daowayApp.png" alt="">
@@ -79,14 +65,38 @@
         </div>
       </div>
     </div>
+    <com-footer></com-footer>
+  </div>
+
 </template>
 
 <script>
-    export default {}
+  import header from '../header/header.vue'
+  import footer from '../footer/footer.vue'
+  import Bus from '../../common/eventBus'
+  import home from '../home/home.vue'
+    export default {
+      data(){
+        return{
+            bao:{}
+        }
+      },
+      created(){
+        Bus.$on('details', (bao) =>{
+          this.bao = bao
+        })
+
+      },
+      components:{
+        'com-header' : header,
+        'com-footer' : footer,
+
+      }
+    }
 </script>
 
 
-<style>
+<style scoped>
 body{
   background: #fbf8f8;
 }

@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <com-header></com-header>
     <div class="carousel">
       <el-carousel height="420px" class="rotate">
         <el-carousel-item>
@@ -26,13 +28,25 @@
         </ul>
       </div>
     </div>
+    <com-footer></com-footer>
+  </div>
+
 </template>
 
 <script>
-    export default {}
+  import header from '../header/header.vue'
+  import footer from '../footer/footer.vue'
+    export default {
+
+      components:{
+        'com-header' : header,
+        'com-footer' : footer,
+
+      }
+    }
 </script>
 
-<style>
+<style scoped>
 img{
   vertical-align: middle;
 }

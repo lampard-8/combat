@@ -6,7 +6,8 @@ import VueRouter from 'vue-router'
 
 import home from '../components/home/home.vue'
 import serve from '../components/serve/serve.vue'
-
+import register from '../components/register/register.vue'
+import login from '../components/login/login.vue'
 import item from '../components/item/item.vue'
 import details from '../components/details/details.vue'
 
@@ -21,6 +22,10 @@ export default new VueRouter({
       component:home,
     },
     {
+      path:'/home',
+      component:home,
+    },
+    {
       path:'/serve',
       component:serve
     },
@@ -30,8 +35,19 @@ export default new VueRouter({
     },
     {
       path:'/details',
-      component:details
-    }
+      component:details,
+      children:[
+        { path: ':id', component: details},
+      ]
+    },
+    {
+      path:'/login',
+      component:login
+    },
+    {
+      path:'/register',
+      component:register
+    },
 
   ]
 

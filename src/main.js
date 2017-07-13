@@ -3,9 +3,12 @@
 import Vue from 'vue'
 import app from './app'
 import router from './router'
+import './common/stylus/fonts.styl'
+import './mock/mockServer'
 
-
+import '../static/reset.css'
 import { Button, Select,Row,Col,Carousel,CarouselItem, Input} from 'element-ui'
+
 
 
 Vue.use(Button)

@@ -1,19 +1,21 @@
 <template>
-  <div class="item">
-    <div class="item-header">
-      <h2>
-        <a href="#">所有分类</a>
-        &nbsp;
-        <a href="#"> > </a>
-        &nbsp;&nbsp;
-        <a href="#" class="family">家庭保洁</a>
-        &nbsp;
-        <a href="#"> > </a>
-      </h2>
-    </div>
-    <div class="navcenter">
-      <div class="list">
-        <span class="fist"><a href="">分类</a></span>
+  <div>
+    <com-header></com-header>
+    <div class="item">
+      <div class="item-header">
+        <h2>
+          <a href="#">所有分类</a>
+          &nbsp;
+          <a href="#"> > </a>
+          &nbsp;&nbsp;
+          <a href="#" class="family">家庭保洁</a>
+          &nbsp;
+          <a href="#"> > </a>
+        </h2>
+      </div>
+      <div class="navcenter">
+        <div class="list">
+          <span class="fist"><a href="">分类</a></span>
           <span id="all" class="clickAble"><a id="red" href="#">全部</a></span>
           <span id="小时工" class="clickAble "><a href="#">小时工</a></span>
           <span id="开荒保洁" class="clickAble "><a href="#">开荒保洁</a></span>
@@ -21,11 +23,11 @@
           <span id="深度保洁" class="clickAble "><a href="#">深度保洁</a></span>
           <span id="家居养护" class="clickAble "><a href="#">家居养护</a></span>
           <span id="杀虫灭鼠" class="clickAble "><a href="#">杀虫灭鼠</a></span>
+        </div>
       </div>
-    </div>
-    <div class="service-center">
-      <div class="centerleft">
-        <h3>
+      <div class="service-center">
+        <div class="centerleft">
+          <h3>
           <span class="ranking">
                 <a href="#" id="recommend">推荐排序</a>
                 <a href="#" id="sale" class="activity">销量高 <img src="./fuwu_down2.jpg" width="12" height="7"></a>
@@ -33,380 +35,101 @@
                 <a href="#" id="aheadhours" class="">上门快 <img src="./fuwu_down2.jpg" width="12" height="7"></a>
                 <a href="#" id="price" class="">价格低 <img src="./fuwu_down2.jpg" width="12" height="7"></a>
           </span>
-          <span class="flip">
+            <span class="flip">
             <span id="page" class="cout">1</span>/<span id="pages">49</span>
             <a href="#" class="pageup greycolor">上一页</a>
             <a href="#" class="pagedown ">下一页</a>
           </span>
-        </h3>
-        <div class="items">
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
+          </h3>
+          <div class="items">
+            <router-link to="/details" v-for="jie in baojie">
+              <div class="boxtab">
+                <img class="img-left" :src="jie.img" alt="">
+                <span class="information">
+              <span class="title">{{jie.name}}</span>
                <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
+                <span class="volume">{{jie.content}}</span>
               </span>
               <br>
               <span class="Price">
-                <span class="red">30</span>
+                <span class="red">{{jie.price}}</span>
                 <span class="minred">元/小时</span>
                 &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
+                <span class="old">原价{{jie.oldPrice}}元</span>
                 <br>
                 <span class="navtxt">
                   <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
+                  <span>{{jie.provider}}</span>&nbsp;
+                  <span>已售{{jie.already}}</span>&nbsp;
+                  <span>好评{{jie.praise}}%</span>
                 </span>
               </span>
             </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
+                <div class="quickly">
+                  <a href="#">最快上门</a>
+                  <a class="bai" href="#">2小时</a>
+                </div>
               </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
-          <router-link to="/details">
-            <div class="boxtab">
-              <img class="img-left" src="./thumb.jpg" alt="">
-              <span class="information">
-              <span class="title">家庭保洁</span>
-               <span class="Price">
-                <span class="volume">服务内容：
-家庭保洁服务，2小时起订。（云家政暂时不提供带保...</span>
-              </span>
-              <br>
-              <span class="Price">
-                <span class="red">30</span>
-                <span class="minred">元/小时</span>
-                &nbsp;&nbsp;&nbsp;
-                <span class="old">原价50元</span>
-                <br>
-                <span class="navtxt">
-                  <img src="./home1.png" alt="">
-                  <span>云家政</span>&nbsp;
-                  <span>已售34876</span>&nbsp;
-                  <span>好评86%</span>
-                </span>
-              </span>
-            </span>
-              <div class="quickly">
-                <a href="#">最快上门</a>
-                <a class="bai" href="#">2小时</a>
-              </div>
-            </div>
-          </router-link>
+            </router-link>
+          </div>
+          <div class="fenye2">
+            <a class="pageup greycolor">&lt;上一页</a>
+            <div id="showPage" style="display: inline-block">
+              <a class="num acv">1</a>
+              <a class="num ">2</a>
+              <a class="num ">3</a>
+              <a class="num ">4</a>
+              <a class="num ">5</a>
+              <a class="num ">6</a>
+              <a class="num ">7</a>
+              <a class="num ">8</a>
+              <a class="num ">9</a>
+              ...
+
+   </div>
+            <a class="pagedown ">下一页&gt;</a>
+          </div>
+
         </div>
-        <div class="fenye2">
-          <a class="pageup greycolor">&lt;上一页</a>
-          <div id="showPage" style="display: inline-block">
-            <a class="num acv">1</a>
-            <a class="num ">2</a>
-            <a class="num ">3</a>
-            <a class="num ">4</a>
-            <a class="num ">5</a>
-            <a class="num ">6</a>
-            <a class="num ">7</a>
-            <a class="num ">8</a>
-            <a class="num ">9</a>
-            ...
-
- </div>
-          <a class="pagedown ">下一页&gt;</a>
-        </div>
-
-      </div>
-      <div class="centerright" style="position: relative; margin-left: 0">
-        <div class="rightct">
-          <h3>服务商</h3>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">云家政</p>
-            <p class="pline"><em>已成功接单<b>26860</b></em><em style="float: right">好评<b>86%</b></em></p>
+        <div class="centerright">
+          <div class="rightct">
+            <h3>服务商</h3>
+            <div class="fuwishang" v-for="baoright in baojie">
+              <img :src="baoright.img" width="70" height="70">
+              <p>{{baoright.provider}}</p>
+              <p class="pline">
+                <span>已成功接单<span>{{baoright.success}}</span></span>
+                <span>好评<span>{{baoright.praise}}%</span></span></p>
+            </div>
           </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/08/24/94117c68-1048-473b-8370-dc40ab66c3e0_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">三鼎家政</p>
-            <p class="pline"><em>已成功接单<b>13883</b></em><em style="float: right">好评<b>84%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/09/20/31043989-f708-4be6-8990-e85fd903fd0f_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">悦管家</p>
-            <p class="pline"><em>已成功接单<b>1444</b></em><em style="float: right">好评<b>93%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2017/02/12/02079ba0-04f0-464d-a5b4-5806402337e9_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">来人到家</p>
-            <p class="pline"><em>已成功接单<b>14798</b></em><em style="float: right">好评<b>85%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/09/20/314afa69-1924-465b-89a2-cb65302dea68_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">洁道夫</p>
-            <p class="pline"><em>已成功接单<b>953</b></em><em style="float: right">好评<b>90%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/10/18/4a6382d0-0a5a-4365-b17f-595b376109a2_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">家政圈</p>
-            <p class="pline"><em>已成功接单<b>4137</b></em><em style="float: right">好评<b>86%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/04/23/72279dd6-56e1-4b94-81d3-13d6d0924760_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">叮当到家</p>
-            <p class="pline"><em>已成功接单<b>864</b></em><em style="float: right">好评<b>91%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/12/14/87291e1a-d281-42b4-a57b-a765198db128_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">一刻钟生活服务</p>
-            <p class="pline"><em>已成功接单<b>364</b></em><em style="float: right">好评<b>94%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/06/29/b1696558-fd8c-4240-a6aa-3f649eb1c799_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">鸿到家</p>
-            <p class="pline"><em>已成功接单<b>445</b></em><em style="float: right">好评<b>94%</b></em></p>
-          </div>
-
-          <div class="fuwishang">
-            <img style="text-align: center; margin:30px 50px; margin-bottom: 10px" src="http://img.daoway.cn/img/2016/06/29/d81d1eb2-ce48-470e-a480-ce23f0324e62_thumb.jpg" width="70" height="70">
-            <p style="text-align: center; margin-bottom: 6px; font-weight: bold">中鼎家政</p>
-            <p class="pline"><em>已成功接单<b>266</b></em><em style="float: right">好评<b>96%</b></em></p>
-          </div>
-
         </div>
       </div>
     </div>
+    <com-footer></com-footer>
   </div>
+
 
 </template>
 
 
 <script>
-    export default {}
+  import header from '../header/header.vue'
+  import footer from '../footer/footer.vue'
+
+    export default {
+
+      props:['baojie'],
+      components:{
+        'com-header' : header,
+        'com-footer' : footer,
+
+      }
+
+
+    }
 </script>
 
-<style>
+<style scoped>
   body{
     background: #fbf8f8;
   }
@@ -496,6 +219,7 @@
 
 
   .boxtab{
+    height: 200px;
     overflow: hidden;
     background-color: white;
     border-bottom: 1px solid #e5e5e5;
@@ -541,6 +265,7 @@
     float: left;
     position: relative;
     top: 25px;
+    width: 420px;
   }
   .information span:nth-child(1) {
     font-size: 18px;
@@ -561,6 +286,9 @@
     color: #fc545e;
   }
   .volume{
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
     color: #929292 !important;
 
     font-size: 15px !important;
@@ -625,11 +353,16 @@
     line-height: 60px;
     margin: 0;
     text-align: left;
+    margin-bottom: 25px;
   }
   .fuwishang {
     height: 200px;
     background: #fff;
     cursor: pointer;
+  }
+  .fuwishang p{
+    padding-top: 20px;
+    padding-bottom: 14px;
   }
   .fenye2 {
     width: 100%;
@@ -637,6 +370,12 @@
     height: 152px;
     clear: both;
     text-align: center;
+  }
+  .pline{
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .pline span{
+    color: #929292;
   }
   .fenye span, .fenye2 a {
     width: 200px;

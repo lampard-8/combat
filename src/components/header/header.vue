@@ -41,7 +41,7 @@
                 </a>
                 </li>
                 <li class="shanghu-right">
-                  <router-link to="/landing">
+                  <router-link to="/login" target="_blank">
                     <el-button type="danger" class="danger">商家登录</el-button>
                   </router-link>
                 </li>
@@ -50,7 +50,6 @@
           </el-col>
         </el-row>
       </div>
-
     </div>
 </template>
 
@@ -58,7 +57,7 @@
     export default {}
 </script>
 
-<style>
+<style scoped>
 #header{
   height: 70px;
   position:fixed;

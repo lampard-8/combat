@@ -1,89 +1,70 @@
 <template>
-      <div class="serve">
-        <el-row type="flex" :gutter="20" >
-          <el-col :span="20">
-            <h2>服务商</h2>
-            <div class="service-center">
-              <div class="centerleft">
-                <ul>
-                  <li>
-                    <img class="photo" src="./011.jpg">
-                    <p><img src="./home1.png"><b>宜生到家</b></p>
-                    <p class="orders">已接单11952单<span>好评98%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./012.jpg">
-                    <p><img src="./home1.png"><b>云家政</b></p>
-                    <p class="orders">已接单11522单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./013.jpg">
-                    <p><img src="./home1.png"><b>兰犀牛</b></p>
-                    <p class="orders">已接单11952单<span>好评95%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./014.jpg">
-                    <p><img src="./home1.png"><b>云足疗</b></p>
-                    <p class="orders">已接单12952单<span>好评91%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./015.jpg">
-                    <p><img src="./home1.png"><b>洁到夫</b></p>
-                    <p class="orders">已接单11952单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./015.jpg">
-                    <p><img src="./home1.png"><b>洁到夫</b></p>
-                    <p class="orders">已接单11952单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./015.jpg">
-                    <p><img src="./home1.png"><b>洁到夫</b></p>
-                    <p class="orders">已接单11952单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./015.jpg">
-                    <p><img src="./home1.png"><b>洁到夫</b></p>
-                    <p class="orders">已接单11952单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./015.jpg">
-                    <p><img src="./home1.png"><b>洁到夫</b></p>
-                    <p class="orders">已接单11952单<span>好评88%</span></p>
-                  </li>
-                  <li>
-                    <img class="photo" src="./011.jpg">
-                    <p><img src="./home1.png"><b>上门修机</b></p>
-                    <p class="orders">已接单33333单<span>好评110%</span></p>
-                  </li>
-                </ul>
-                <div class="getServiceList">
-                  <span>查看更多商家<img src="./fuwu_down2.jpg"></span>
-                </div>
+  <div>
+    <com-header></com-header>
+    <div class="serve">
+      <el-row type="flex" :gutter="20" >
+        <el-col :span="20">
+          <h2>服务商</h2>
+          <div class="service-center">
+            <div class="centerleft">
+              <ul>
+                <li v-for="an in anmo">
+                  <img class="photo" :src="an.img">
+                  <p><img src="./home1.png"><b>{{an.provider}}</b></p>
+                  <p class="orders">已接单{{an.success}}单<span>好评{{an.praise}}%</span></p>
+                </li>
+              </ul>
+              <div class="getServiceList">
+                <span>查看更多商家<img src="./fuwu_down2.jpg"></span>
               </div>
             </div>
-          </el-col>
-          <el-col :span="4">
-            <div class="centerright">
-              <img src="./tuijianfuwushang_03.jpg" alt="">
-              <div class="code">
-                <img src="./tuijianfuwushang_06.jpg" alt="">
-                <img id="erwei" src="./daowayApp.png" alt="">
-              </div>
+          </div>
+        </el-col>
+        <el-col :span="4">
+          <div class="centerright">
+            <img src="./tuijianfuwushang_03.jpg" alt="">
+            <div class="code">
+              <img src="./tuijianfuwushang_06.jpg" alt="">
+              <img id="erwei" src="./daowayApp.png" alt="">
             </div>
-          </el-col>
-        </el-row>
-      </div>
-
-
-
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+    <com-footer></com-footer>
+  </div>
 </template>
 
 <script>
-    export default {}
+  import header from '../header/header.vue'
+  import footer from '../footer/footer.vue'
+  import axios from 'axios'
+    export default {
+      data(){
+        return{
+          anmo:[]
+        }
+      },
+      created(){
+        axios.get('/api/serve')
+          .then(response => {
+              const result = response.data
+              if(result.code === 0){
+                  this.anmo = result.data.server
+                  console.log(this.anmo);
+              }
+          })
+      },
+
+      components:{
+        'com-header' : header,
+        'com-footer' : footer,
+
+      }
+    }
 </script>
 
-<style>
+<style scoped>
 img {
     vertical-align: middle;
   }
